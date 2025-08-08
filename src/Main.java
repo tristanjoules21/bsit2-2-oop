@@ -2,6 +2,31 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world");
+
+        Student s1 = new Student("Alice", 20, "BSIT", 85, 90, 88);
+        Student s2 = new Student("Bob", 21, "BSCS", 92, 95, 89);
+        Student s3 = new Student("Charlie", 19, "BSIT", 65, 70, 68);
+
+        Student[] list = {s1, s2, s3};
+
+        int passCount = 0;
+
+        for (Student s : list) {
+            s.showInfo();
+            double avg = s.getAverage();
+            String grade = s.getGrade();
+            boolean pass = s.isPass();
+
+            System.out.printf("Average: %.2f\n", avg);
+            System.out.println("Letter Grade: " + grade);
+            System.out.println("Status: " + (pass ? "PASSING" : "FAILING"));
+
+
+            if (pass) {
+                passCount++;
+            }
+        }
+
+        System.out.println("Summary: " + passCount + " out of 3 students are passing");
     }
 }
