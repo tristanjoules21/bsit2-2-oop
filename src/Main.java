@@ -4,8 +4,8 @@ public class Main {
     public static void main(String[] args) {
 
         Student s1 = new Student("Alice", 20, "BSIT", 85, 90, 88);
-        Student s2 = new Student("Bob", 21, "BSCS", 92, 95, 89);
-        Student s3 = new Student("Charlie", 19, "BSIT", 65, 70, 68);
+        Student s2 = new Student("Bob", 19, "BSCS", 92, 95, 89);
+        Student s3 = new Student("Charlie", 21, "BSIT", 65, 70, 68);
 
         Student[] list = {s1, s2, s3};
 

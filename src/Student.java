@@ -15,7 +15,6 @@ public class Student {
 
     public void showInfo() {
         System.out.println("Name: " + name + ", Age: " + age + ", Course: " + course );
-
         System.out.println("Grades :" + g1 +", "+ g2 +", " + g3);
 
     }
