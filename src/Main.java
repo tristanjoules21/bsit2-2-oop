@@ -8,7 +8,7 @@ public class Main {
         Order order2 = new Order("Bob Smith");
         Order order3 = new Order("Charlie Brown");
 
-        // Valid additions
+
         try {
             order1.addItem("Pizza", 12.99);
             order1.addItem("Pasta", 9.75);
@@ -18,7 +18,7 @@ public class Main {
             System.out.println("Error: " + e.getMessage());
         }
 
-        // Valid multiple items
+
         try {
             order2.addMultipleItems(
                     new String[]{"Burger", "Fries", "Shake", "Nuggets", "Cola"},
@@ -29,7 +29,7 @@ public class Main {
             System.out.println("Error: " + e.getMessage());
         }
 
-        // Multiple invalid items to trigger errors
+
         try {
             order3.addMultipleItems(
                     new String[]{"Salad", "", "Water", "Ice Cream"},
@@ -39,28 +39,28 @@ public class Main {
             System.out.println("Error: " + e.getMessage());
         }
 
-        // Mismatched arrays length - error expected
+
         try {
             order3.addMultipleItems(new String[]{"Soup", "Juice"}, 4.50);
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         }
 
-        // Try adding single item with empty name - error expected
+
         try {
             order1.addItem("", 4.50);
         } catch (IllegalArgumentException e) {
             System.out.println("Error adding single item: " + e.getMessage());
         }
 
-        // Try adding single item with price zero - error expected
+
         try {
             order2.addItem("Cookie", 0);
         } catch (IllegalArgumentException e) {
             System.out.println("Error adding single item: " + e.getMessage());
         }
 
-        // Try adding single item with null name - error expected
+
         try {
             order2.addItem(null, 3.25);
         } catch (IllegalArgumentException e) {
