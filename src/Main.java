@@ -1,7 +1,72 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world");
+        System.out.println("=== Food Ordering System ===\n");
+
+        System.out.println("Creating orders and adding items...");
+
+
+        Order order1 = new Order("Alice Johnson");
+        Order order2 = new Order("Bob Smith");
+        Order order3 = new Order("Charlie Brown");
+
+
+        try {
+            order1.addItem("Pizza", 12.99);
+            order1.addItem("Pasta", 9.75);
+            order1.addItem("Drink", 1.99);
+            System.out.println("Item 'Pizza' added successfully");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+
+        try {
+            order2.addMultipleItems(
+                    new String[]{"Burger", "Fries", "Shake", "Nuggets", "Cola"},
+                    8.50, 3.25, 5.00, 10.00, 5.70
+            );
+            System.out.println("Items added: Burger, Fries, Shake, Nuggets, Cola");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+
+        try {
+            order3.addMultipleItems(
+                    new String[]{"Salad", "", "Water"},
+                    6.50, -3.00, 9.00
+            );
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        // Mismatched array length
+        try {
+            order3.addMultipleItems(new String[]{"Soup", "Juice"}, 4.50);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        // Display orders
+        System.out.println("\nOrder Results:");
+        System.out.println(order1.displayOrder());
+        System.out.println(order2.displayOrder());
+        System.out.println(order3.displayOrder());
+
+
+        System.out.println("\nTotal orders created: " + Order.getTotalOrders());
+
+
+        Order[] orders = {order1, order2, order3};
+        Order largest = orders[0];
+
+        for (Order ord : orders) {
+            if (ord.getTotalAmount() > largest.getTotalAmount()) {
+                largest = ord;
+            }
+        }
+
+        System.out.printf("Largest order: %s ($%.2f)%n",
+                largest.getCustomerName(), largest.getTotalAmount());
     }
 }
